@@ -4,11 +4,11 @@ cd /var/www/clients/client3/web8/web
 # STEP 1: BACKUP ALL INFECTED FILES
 # ============================================
 echo "[1/8] Backing up infected files..."
-sudo mkdir -p /tmp/infected_backup_$(date +%s)
-sudo cp wp-includes/customize/class-wp-widget-customize-control.php /tmp/infected_backup_$(date +%s)/
-sudo cp wp-includes/template-loader.php /tmp/infected_backup_$(date +%s)/
-sudo cp wp-includes/class-wp.php /tmp/infected_backup_$(date +%s)/
-sudo cp wp-includes/functions.php /tmp/infected_backup_$(date +%s)/ 2>/dev/null
+sudo mkdir -p /root/forensic/infected_backup_$(date +%s)
+sudo cp wp-includes/customize/class-wp-widget-customize-control.php /root/forensic/infected_backup_$(date +%s)/
+sudo cp wp-includes/template-loader.php /root/forensic/infected_backup_$(date +%s)/
+sudo cp wp-includes/class-wp.php /root/forensic/infected_backup_$(date +%s)/
+sudo cp wp-includes/functions.php /root/forensic/infected_backup_$(date +%s)/ 2>/dev/null
 
 # ============================================
 # STEP 2: DOWNLOAD CLEAN WORDPRESS 6.4.7
@@ -22,16 +22,16 @@ tar -xzf wordpress-6.4.7.tar.gz
 # STEP 3: REPLACE INFECTED FILES
 # ============================================
 echo "[3/8] Replacing infected core files..."
-sudo cp /tmp/wordpress/wp-includes/customize/class-wp-widget-customize-control.php \
+sudo cp /root/forensic/wordpress/wp-includes/customize/class-wp-widget-customize-control.php \
   /var/www/clients/client3/web8/web/wp-includes/customize/
 
-sudo cp /tmp/wordpress/wp-includes/template-loader.php \
+sudo cp /root/forensic/wordpress/wp-includes/template-loader.php \
   /var/www/clients/client3/web8/web/wp-includes/
 
-sudo cp /tmp/wordpress/wp-includes/class-wp.php \
+sudo cp /root/forensic/wordpress/wp-includes/class-wp.php \
   /var/www/clients/client3/web8/web/wp-includes/
 
-sudo cp /tmp/wordpress/wp-includes/functions.php \
+sudo cp /root/forensic/wordpress/wp-includes/functions.php \
   /var/www/clients/client3/web8/web/wp-includes/
 
 # ============================================
@@ -74,7 +74,7 @@ echo "==================================="
 echo "CLEANUP COMPLETED!"
 echo "==================================="
 echo ""
-echo "Infected files backed up to: /tmp/infected_backup_*/"
+echo "Infected files backed up to: /root/forensic/infected_backup_*/"
 echo ""
 echo "NEXT ACTIONS REQUIRED:"
 echo "1. Check for malicious WordPress users"
